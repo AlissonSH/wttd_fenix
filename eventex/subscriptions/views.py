@@ -22,22 +22,24 @@ def create(request):
         return render(request, 'subscriptions/subscription_form.html',
                       {'form': form})
 
-    subscriber_email = form.cleaned_data['email']
+    subscription = Subscription.objects.create(**form.cleaned_data)
 
     _send_mail('Confirmação de Inscrição',
                settings.DEFAULT_FROM_EMAIL,
-               subscriber_email,
+               subscription.email,
                'subscriptions/subscription_email.txt',
-               form.cleaned_data)
+               {'subscription': subscription})
 
-    Subscription.objects.create(**form.cleaned_data)
-    messages.success(request, 'Inscrição realizada com sucesso!')
-
-    return HttpResponseRedirect('/inscricao/')
+    return HttpResponseRedirect('/inscricao/{}/'.format(subscription.pk))
 
 
 def new(request):
     return render(request, 'subscriptions/subscription_form.html', {'form': SubscriptionForm()})
+
+
+def detail(request):
+    return render(request, 'subscriptions/subscription_detail.html',
+                  {'subscription': Subscription()})
 
 
 def _send_mail(subject, from_, to, template_name, context):
