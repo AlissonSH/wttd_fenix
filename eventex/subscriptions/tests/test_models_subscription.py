@@ -7,7 +7,7 @@ from eventex.subscriptions.models import Subscription
 class SubscriptionModelTest(TestCase):
     def setUp(self):
         self.obj = Subscription(
-            name='Álisson Sielo Holkem',
+            name='A          lisson Sielo Holkem',
             cpf='12345678901',
             email='alissonsieloholkem@gmail.com',
             phone='55-99206-7827'
@@ -22,4 +22,4 @@ class SubscriptionModelTest(TestCase):
         self.assertIsInstance(self.obj.created_at, datetime)
 
     def test_str(self):
-        self.assertEquals('Álisson Sielo Holkem', str(self.obj))
+        self.assertEquals('Alisson Sielo Holkem', str(self.obj))
