@@ -77,3 +77,11 @@ class SubscriptionNewPostInvalid(TestCase):
 
     def test_not_save_subscription(self):
         self.assertFalse(Subscription.objects.exists())
+
+
+class TemplateRegressionTests(TestCase):
+    def test_template_has_non_fieldas_erros(self):
+        invalid_data = dict(name='Alisson Sielo Holkem', cpf='1234567890')
+        response = self.client.post(r('subscriptions:new'), invalid_data)
+
+        self.assertContains(response, '<ul class="errorlist nonfield">')
