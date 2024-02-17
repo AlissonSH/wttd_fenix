@@ -6,11 +6,11 @@ from eventex.core.models import Speaker
 class SpeakerDetailGet(TestCase):
     def setUp(self):
         Speaker.objects.create(
-            name = "Grace Hopper",
-            slug = "grace-hopper",
-            photo = "https://www.timeforkids.com/wp-content/uploads/2020/08/Grace_003.jpg",
-            website = "http://hbn.link/hopper-site",
-            description = "Programadora e almirante.",
+            name="Grace Hopper",
+            slug="grace-hopper",
+            photo="https://www.timeforkids.com/wp-content/uploads/2020/08/Grace_003.jpg",
+            website="http://hbn.link/hopper-site",
+            description="Programadora e almirante.",
         )
         self.resp = self.client.get(r('speaker_detail', slug='grace-hopper'))
 
