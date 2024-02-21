@@ -8,9 +8,9 @@ class SpeakerModelTest(TestCase):
         self.speaker = Speaker.objects.create(
             name="Grace Hopper",
             slug="grace-hopper",
-            photo= "https://www.timeforkids.com/wp-content/uploads/2020/08/Grace_003.jpg",
-            website = "http://hbn.link/hopper-site", 
-            description = "Programadora e almirante."
+            photo="https://www.timeforkids.com/wp-content/uploads/2020/08/Grace_003.jpg",
+            website="http://hbn.link/hopper-site",
+            description="Programadora e almirante."
         )
 
     def test_create(self):
