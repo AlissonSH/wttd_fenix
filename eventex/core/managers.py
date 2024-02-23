@@ -11,6 +11,7 @@ class KindQuerySet(models.QuerySet):
 
 class PeriodManager(models.Manager):
     MIDDAY = "12:00"
+
     def at_morning(self):
         return self.filter(start__lt=self.MIDDAY)
 
