@@ -40,7 +40,7 @@ class SpeakerDetailGet(TestCase):
         self.assertIsInstance(speaker, Speaker)
 
 
-class SpeakerDetailNotFounf(TestCase):
+class SpeakerDetailNotFound(TestCase):
     def test_not_found(self):
         response = self.client.get(r('speaker_detail', slug='not_found'))
         self.assertEqual(404, response.status_code)
