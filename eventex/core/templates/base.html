@@ -23,11 +23,20 @@
 
 	<body>
         <div class="header-frame row">
-            {% include 'nav.html' only %}
+            {% include 'includes/nav.html' only %}
         </div>
 
-        {% block content %}
-        {% endblock content %}
+        <div class="main-container row" style="display: flex;">
+            <div class="sidebar">
+                {% include 'includes/sidebar.html' %}
+            </div>
+            <div class="content-area" style="flex: 1;">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+
+
 
     </body>
 </html>
