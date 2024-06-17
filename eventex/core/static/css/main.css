@@ -391,4 +391,47 @@ section header h2 {
     margin: 0;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.main-container {
+    display: flex;
+    height: 100vh; /* Garante que o contêiner principal ocupe a altura total da tela */
+}
+
+.sidebar {
+    background-color: #0e6da8; /* Defina a cor de fundo como azul */
+    color: white;           /* Opcional: defina a cor do texto como branca para contraste */
+    padding: 25px;          /* Opcional: adicione padding para espaçamento interno */
+    width: 200px;         /* Largura fixa */
+    box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura e altura */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.content-area {
+    margin-left: 200px; /* Compensa a largura da barra lateral fixa */
+    padding: 25px;
+    box-sizing: border-box;
+    width: calc(100% - 200px); /* Ajusta a largura do conteúdo principal */
+    overflow-y: auto; /* Adiciona rolagem vertical ao conteúdo principal */
+}
+
+.sidebars-text {
+    font-size: 25px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 1%;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    white-space: nowrap;
+}
+
 /* Fim Customização */
