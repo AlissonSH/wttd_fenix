@@ -399,25 +399,40 @@ html, body {
 
 .main-container {
     display: flex;
-    height: 100vh; /* Garante que o contêiner principal ocupe a altura total da tela */
+    position: relative;
+    background-color: #ebeef8;
+    top: 90px;
+    margin-left: 230px;
+    padding: 0 15px 60px 15px;
+    -webkit-transition: margin .2s ease-in-out;
+    -o-transition: margin .2s ease-in-out;
+    transition: margin .2s ease-in-out;
+    min-height: 1400px;
+}
+
+.header-frame {
+    width: 100%;
+    position: fixed; /* Fixa a barra de navegação no topo */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Garante que a barra de navegação fique acima de outros elementos */
 }
 
 .sidebar {
-    background-color: #0e6da8; /* Defina a cor de fundo como azul */
-    color: white;           /* Opcional: defina a cor do texto como branca para contraste */
+    background-color: white; /* Defina a cor de fundo como azul */
+    color: #0e6da8;           /* Opcional: defina a cor do texto como branca para contraste */
     padding: 25px;          /* Opcional: adicione padding para espaçamento interno */
-    width: 200px;         /* Largura fixa */
+    width: 230px;         /* Largura fixa */
     box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura e altura */
-    top: 0;
-    bottom: 0;
-    left: 0;
     display: flex;
+    position: fixed;
+    top: 90px;
     justify-content: center;
 }
 
 .content-area {
-    margin-left: 200px; /* Compensa a largura da barra lateral fixa */
-    padding: 25px;
+    margin-left: -15px; /* Compensa a largura da barra lateral fixa */
+    padding: 15px;
     box-sizing: border-box;
     width: calc(100% - 200px); /* Ajusta a largura do conteúdo principal */
     overflow-y: auto; /* Adiciona rolagem vertical ao conteúdo principal */
@@ -426,11 +441,24 @@ html, body {
 .sidebars-text {
     font-size: 25px;
     font-family: sans-serif;
+    font-weight: bold;
     text-transform: uppercase;
     padding: 1%;
     writing-mode: vertical-lr;
     text-orientation: upright;
     white-space: nowrap;
+}
+
+.page-heading {
+    margin-top: -30px; /* Remove a margem padrão ao redor da div */
+    margin-bottom: -30px;
+}
+
+.page-title {
+    font-size: 23px;
+    font-family: inherit;
+    margin: 0;
+    color: #2e5d8e;
 }
 
 /* Fim Customização */
