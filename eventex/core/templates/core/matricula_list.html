@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+<div class="sidebar">
+    {% include 'includes/sidebar.html' %}
+</div>
+{% endblock sidebar %}
+
+{% block page_heading %}
+<div class="page-heading">
+    <h7 class="page-title page-title-custom">Lista de Alunos</h7>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="ibox accent-primary">
+    <div class="ibox-body">
+        <div class="row mb-0">
+            <div class="col-sm-5 mb-1">
+                <a href="" class="btn btn-create btn-sm" style="min-width: 25%"> Adicionar</a>
+                <a href="" class="btn btn-secondary btn-sm" style="min-width: 25%"> Relatório</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
