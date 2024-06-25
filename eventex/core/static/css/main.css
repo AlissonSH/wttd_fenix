@@ -450,15 +450,55 @@ html, body {
 }
 
 .page-heading {
-    margin-top: -30px; /* Remove a margem padrão ao redor da div */
-    margin-bottom: -30px;
+    margin: 20px 0 10px 0;
 }
 
 .page-title {
     font-size: 23px;
-    font-family: inherit;
-    margin: 0;
+    font-family: "Ubuntu", serif;
     color: #2e5d8e;
+}
+
+.ibox {
+    position: relative;
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.ibox-body {
+    padding: 15px 25px 15px;
+}
+
+.accent-primary {
+    border-top: 3px solid #095e91;
+    border-radius: 3px;
+}
+
+.btn {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    outline: 0 !important;
+    -webkit-transition: all ease-in-out .15s;
+    -o-transition: all ease-in-out .15s;
+    transition: all ease-in-out .15s;
+    position: relative;
+    padding: 0.65rem 1.25rem;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.btn-create {
+    color: white !important;
+    background-color: #095e91;
+    border-color: #095e91;
+}
+
+.btn-sm {
+    padding: 0.35rem 0.75rem;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
 }
 
 /* Fim Customização */
