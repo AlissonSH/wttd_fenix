@@ -44,5 +44,5 @@ class HomeTest(TestCase):
         self.assertContains(self.response, expected)
 
     def test_creates_link(self):
-        expected = 'href="{}"'.format(r('core:create_list'))
+        expected = 'href="{}"'.format(r('core:matricula_list'))
         self.assertContains(self.response, expected)
