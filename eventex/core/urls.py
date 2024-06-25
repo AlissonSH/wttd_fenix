@@ -1,8 +1,8 @@
 from django.urls import path
-from eventex.core.views import create_list
+from eventex.core.views import matricula_list
 
 app_name = 'core'
 
 urlpatterns = [
-    path('', create_list, name='create_list'),
+    path('listar/', matricula_list, name='matricula_list'),
 ]

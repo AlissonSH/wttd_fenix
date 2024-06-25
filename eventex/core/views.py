@@ -10,6 +10,6 @@ speaker_detail = DetailView.as_view(model=Speaker)
 talk_list = ListView.as_view(model=Talk)
 
 
-def create_list(request):
-    template_name = "core/create_list.html"
+def matricula_list(request):
+    template_name = "core/matricula_list.html"
     return render(request, template_name)
