@@ -1,21 +1,59 @@
-<header class="header header-inline min-h-3 row desktop-12 container" role="banner">
+{% load static %}
+<header class="header d-flex header-inline">
 
-    <div class="site-logo">
-        <h1><a href="{% url 'home' %}" rel="home">Eventex</h1>
-        <p class="site-description screen-reader-only">O maior encontro hacker do mundo!</p>
+    <div class="page-brand">
+        <a href="{% url 'home' %}">
+            <span class="brand text-center">
+                <img src="{% static '/img/logo-eventex.png' %}" alt="Abaconta Logo" 
+                     style="width: 150px; height: auto; margin-bottom: 5px; margin-top: 5px">
+            </span>
+        </a>
     </div>
 
-    <nav class="nav-inline" role="navigation">
+    <div class="nav-pills nav-fill nav-inline" role="navigation">
         <a href="javascript:void(0);" class="nav-mobile"><i class="fa fa-bars"></i></a>
-        <ul>
-            <li><a data-scroll href="{% url 'home' %}#overview">Conferência</a></li>
-            <li><a data-scroll href="{% url 'core:matricula_list' %}">Matrícula</a></li>
-            <li><a data-scroll href="{% url 'talk_list' %}">Palestras</a></li>
-            <li><a data-scroll href="{% url 'home' %}#speakers">Palestrantes</a></li>
-            <li><a data-scroll href="{% url 'home' %}#sponsors">Patrocinadores</a></li>
-            <li><a data-scroll href="{% url 'home' %}#register">Inscrição</a></li>
-            <li><a data-scroll href="{% url 'home' %}#venue">Local</a></li>
+        <ul class="d-flex justify-content-center align-items-center list-unstyled mb-0 w-100">
+            <li class="mx-3 d-flex justify-content-center align-items-center">
+                <a style="font-family: 'sinkin_sans300_light', serif;" data-scroll href="{% url 'home' %}#overview">Conferência</a>
+            </li>
+            <li class="mx-3 d-flex justify-content-center align-items-center">
+                <a style="font-family: 'sinkin_sans300_light', serif;" data-scroll href="{% url 'core:matricula_list' %}">Matrícula</a>
+            </li>
+            <li class="mx-3 d-flex justify-content-center align-items-center">
+                <a style="font-family: 'sinkin_sans300_light', serif;" data-scroll href="{% url 'talk_list' %}">Palestras</a>
+            </li>
+            <li class="mx-3 d-flex justify-content-center align-items-center">
+                <a style="font-family: 'sinkin_sans300_light', serif;" data-scroll href="{% url 'home' %}#speakers">Palestrantes</a>
+            </li>
+            <li class="mx-3 d-flex justify-content-center align-items-center">
+                <a style="font-family: 'sinkin_sans300_light', serif;" data-scroll href="{% url 'home' %}#sponsors">Patrocinadores</a>
+            </li>
+            <li class="mx-3 d-flex justify-content-center align-items-center">
+                <a style="font-family: 'sinkin_sans300_light', serif;" data-scroll href="{% url 'home' %}#register">Inscrição</a>
+            </li>
+            <li class="mx-3 d-flex justify-content-center align-items-center">
+                <a style="font-family: 'sinkin_sans300_light', serif;" data-scroll href="{% url 'home' %}#venue">Local</a>
+            </li>
         </ul>
-    </nav>
+    </div>
 
 </header>
+
+<style>
+    @media (max-width: 900px) {
+        .nav-pills.nav-fill.nav-inline ul {
+            flex-direction: column;
+            display: flex;
+        }
+
+        .nav-pills.nav-fill.nav-inline ul.show {
+            display: flex;
+        }
+
+        .nav-mobile {
+            display: inline-block;
+            cursor: pointer;
+        }
+    }
+</style>
+
