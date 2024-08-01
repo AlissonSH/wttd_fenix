@@ -23,10 +23,10 @@ class HomeTest(TestCase):
     def test_speakers(self):
         """Must Show keynote speakers"""
         contents = [
-            'href="{}"'.format(r('speaker_detail', slug='grace-hopper')),
+            'href="{}"'.format(r('core:speaker_detail', slug='grace-hopper')),
             'Grace Hopper',
             'https://www.timeforkids.com/wp-content/uploads/2020/08/Grace_003.jpg',
-            'href="{}"'.format(r('speaker_detail', slug='alan-turing')),
+            'href="{}"'.format(r('core:speaker_detail', slug='alan-turing')),
             'Alan Turing',
             'https://cdn.britannica.com/81/191581-050-8C0A8CD3/Alan-Turing.jpg',
         ]
@@ -40,9 +40,9 @@ class HomeTest(TestCase):
         self.assertContains(self.response, expected)
 
     def test_talks_link(self):
-        expected = 'href="{}"'.format(r('talk_list'))
+        expected = 'href="{}"'.format(r('core:talk_list'))
         self.assertContains(self.response, expected)
 
     def test_lists_link(self):
-        expected = 'href="{}"'.format(r('core:matricula_list'))
+        expected = 'href="{}"'.format(r('registration:matricula_list'))
         self.assertContains(self.response, expected)

@@ -12,7 +12,7 @@ class SpeakerDetailGet(TestCase):
             website="http://hbn.link/hopper-site",
             description="Programadora e almirante.",
         )
-        self.resp = self.client.get(r('speaker_detail', slug='grace-hopper'))
+        self.resp = self.client.get(r('core:speaker_detail', slug='grace-hopper'))
 
 
     def test_get(self):
@@ -42,6 +42,6 @@ class SpeakerDetailGet(TestCase):
 
 class SpeakerDetailNotFound(TestCase):
     def test_not_found(self):
-        response = self.client.get(r('speaker_detail', slug='not_found'))
+        response = self.client.get(r('core:speaker_detail', slug='not_found'))
         self.assertEqual(404, response.status_code)
         

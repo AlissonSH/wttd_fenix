@@ -16,7 +16,7 @@ class TalkListGet(TestCase):
         t2.speakers.add(speaker)
         c1.speakers.add(speaker)
 
-        self.resp = self.client.get(r('talk_list'))
+        self.resp = self.client.get(r('core:talk_list'))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
@@ -51,7 +51,7 @@ class TalkListGet(TestCase):
 
 class TalkListGetEmpty(TestCase):
     def test_get_empty(self):
-        response = self.client.get(r("talk_list"))
+        response = self.client.get(r("core:talk_list"))
 
         self.assertContains(response, "Ainda não existe palestras de manhã.")
         self.assertContains(response, "Ainda não existe palestras de tarde.")
