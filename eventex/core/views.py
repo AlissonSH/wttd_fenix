@@ -8,13 +8,3 @@ home = ListView.as_view(template_name="index.html", model=Speaker)
 speaker_detail = DetailView.as_view(model=Speaker)
 
 talk_list = ListView.as_view(model=Talk)
-
-
-def matricula_list(request):
-    template_name = "core/matricula_list.html"
-    return render(request, template_name)
-
-
-def matricula_create(request):
-    template_name = "core/matricula_create.html"
-    return render(request, template_name)

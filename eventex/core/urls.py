@@ -1,9 +1,9 @@
 from django.urls import path
-from eventex.core.views import matricula_list, matricula_create
+from eventex.core.views import talk_list, speaker_detail
 
 app_name = 'core'
 
 urlpatterns = [
-    path('listar/', matricula_list, name='matricula_list'),
-    path('create/', matricula_create, name='matricula_create'),
+    path('palestras/', talk_list, name='talk_list'),
+    path('palestrantes/<slug:slug>/', speaker_detail, name='speaker_detail'),
 ]
