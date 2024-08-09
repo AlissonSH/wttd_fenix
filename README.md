@@ -1,5 +1,7 @@
 # Eventex
 
+## Por iniciativa própria estou realizando uma nova etapa no projeto, expandindo-o para incluir back-end em Python/Django e front-end com React, HTML, CSS, utilizando AXIOS para comunicações eficientes com as views dos endpoints
+
 Sistema de Eventos encomendado pela Morena.
 
 ## Como desenvolver?
