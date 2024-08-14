@@ -483,4 +483,9 @@ html, body {
     font-size: 30px;
 }
 
+.input-group-sm > .form-select {
+    font-size: inherit !important;
+    line-height: 1.2rem !important;
+}
+
 /* Fim Customização */
