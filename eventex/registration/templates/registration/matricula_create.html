@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 
 {% block sidebar %}
 <div class="sidebar">
@@ -13,5 +14,44 @@
 {% endblock %}
 
 {% block content %}
+<div class="container">
+    <form class="form" role="form" method="POST" enctype="multipart/form-data">
+        <div class="ibox accent-primary">
+            <div class="ibox-body">
+                {% csrf_token %}
+                <div class="row">
 
+                    <div class="col-sm-3 form-group mb-0">
+                        <label for="id_student" class="form-label">{{ form.student.label }}</label>
+                        <div class="input-group input-group-sm">
+                            <select id="id_student" name="aluno" class="form-select form-select-lg mb-3" aria-label="Large select example" style="height: 30px; width: 23px;">
+                                <option value="">Selecione algum aluno!</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 form-group mb-0"></div>
+
+                    <div class="col-sm-2 form-group">
+                        {% bootstrap_field form.cpf %}
+                    </div>
+
+                    <div class="col-sm-2 form-group">
+                        {% bootstrap_field form.phone %}
+                    </div>
+
+                    <div class="col-sm-12 form-group">
+                        {% bootstrap_field form.observation %}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock content %}
