@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'eventex.core',
     'eventex.registration',
     'eventex.subscriptions.apps.SubscriptionsConfig',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
