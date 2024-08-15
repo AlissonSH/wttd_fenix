@@ -26,3 +26,6 @@ class RegistrationModelTestCase(TestCase):
         self.assertEqual(self.registration.cpf, self.students.cpf)
         self.assertEqual(self.registration.phone, self.students.phone)
         self.assertEqual(self.registration.observation, "Aqui posso escrever algo.")
+
+    def test_str(self):
+        self.assertEqual("Alisson Sielo Holkem", str(self.registration))
