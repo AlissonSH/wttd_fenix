@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'test_without_migrations',
     'django_extensions',
     'eventex.core',
-    'eventex.registration',
+    'eventex.registration.apps.RegistrationConfig',
     'eventex.subscriptions.apps.SubscriptionsConfig',
     'bootstrap4',
 ]
