@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load bootstrap4 %}
+
+{% block extra_js %}
+    <script>
+        const URL_LISTA_STUDENT_AJAX = "{% url 'registration:student-select2' %}"
+    </script>
+
+    <script src="{% static 'registration/js/student.js' %}"></script>
+{% endblock %}
 
 {% block sidebar %}
 <div class="sidebar">
-    {% include 'includes/sidebar.html' %}
+    {% include 'includes/_sidebar.html' %}
 </div>
 {% endblock sidebar %}
 
@@ -21,10 +30,10 @@
                 {% csrf_token %}
                 <div class="row">
 
-                    <div class="col-sm-3 form-group mb-0">
-                        <label for="id_student" class="form-label">{{ form.student.label }}</label>
+                    <div class="col-sm-3 form-group mb-3">
+                        <label for="id_student" class="label-text">{{ form.student.label }}</label>
                         <div class="input-group input-group-sm">
-                            <select id="id_student" name="aluno" class="form-select form-select-lg mb-3" aria-label="Large select example" style="height: 30px; width: 23px;">
+                            <select id="id_student" name="student" class="form-control" aria-label="Large select example" style="width: 100%;">
                                 <option value="">Selecione algum aluno!</option>
                             </select>
                         </div>
@@ -32,15 +41,15 @@
 
                     <div class="col-sm-3 form-group mb-0"></div>
 
-                    <div class="col-sm-2 form-group">
+                    <div class="col-sm-2 form-group label-text mb-3">
                         {% bootstrap_field form.cpf %}
                     </div>
 
-                    <div class="col-sm-2 form-group">
+                    <div class="col-sm-2 form-group label-text mb-3">
                         {% bootstrap_field form.phone %}
                     </div>
 
-                    <div class="col-sm-12 form-group">
+                    <div class="col-sm-12 form-group label-text mb-3">
                         {% bootstrap_field form.observation %}
                     </div>
 

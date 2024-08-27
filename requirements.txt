@@ -11,3 +11,4 @@ psycopg2-binary==2.9.6
 django-extensions==3.2.3
 django-test-without-migrations==0.6
 django-bootstrap4==24.3
+djangorestframework==3.15.2
