@@ -41,3 +41,14 @@ class RegistrationViewSetSelect2TestCase(APITestCase):
         results = query.json().get('results', [])
         self.assertGreater(len(results), 0)
         self.assertIn(student_name, [results['text'] for results in results])
+
+
+class RegistrationViewSetGetDadosStudentTestCase(APITestCase):
+    def setUp(self):
+        self.url = r('registration:student-get-dados-student')
+        self.resp = self.client.get(self.url)
+
+    def test_get(self):
+        self.assertEqual(200, self.resp.status_code)
+
+
