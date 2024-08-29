@@ -39,8 +39,7 @@
                 {% block content %}{% endblock content %}
             </div>
         </div>
+        {% include 'includes/_javascript.html' %}
+        {% block extra_js %}{% endblock %}
     </body>
-    {% include 'includes/_javascript.html' %}
-    {% block extra_js %}{% endblock %}
-    
 </html>
