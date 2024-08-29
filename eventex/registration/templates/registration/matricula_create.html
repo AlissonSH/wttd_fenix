@@ -5,6 +5,7 @@
 {% block extra_js %}
     <script>
         const URL_LISTA_STUDENT_AJAX = "{% url 'registration:student-select2' %}"
+        const URL_DADOS_STUDENT_AXIOS = "{% url 'registration:student-get-dados-student' %}"
     </script>
 
     <script src="{% static 'registration/js/student.js' %}"></script>
