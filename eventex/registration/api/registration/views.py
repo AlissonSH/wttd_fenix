@@ -19,3 +19,11 @@ class StudentViewSet(viewsets.GenericViewSet):
             ]
         }
         return JsonResponse(results)
+
+    @action(detail=False, methods=["get"])
+    def get_dados_student(self, request):
+        student = Subscription.objects.filter(id=self.request.query_params.get('id')).first()
+
+
+        teste = {'teste': student.name}
+        return JsonResponse(teste)
