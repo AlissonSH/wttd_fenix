@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'eventex.registration.apps.RegistrationConfig',
     'eventex.subscriptions.apps.SubscriptionsConfig',
     'bootstrap4',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
