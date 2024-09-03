@@ -1,3 +1,5 @@
+from rest_framework import status
+from rest_framework.status import HTTP_200_OK
 from rest_framework.test import APITestCase
 from django.urls import reverse as r
 from eventex.registration.models import Registration
@@ -47,8 +49,33 @@ class RegistrationViewSetGetDadosStudentTestCase(APITestCase):
     def setUp(self):
         self.url = r('registration:student-get-dados-student')
         self.resp = self.client.get(self.url)
+        self.student = Subscription.objects.create(name='Alisson Sielo Holkem')
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
 
+    def test_get_dados_student_cpf_empty(self):
+        self.student.cpf = ''
+        self.student.save()
 
+        response = self.client.get(self.url, {'id': self.student.id})
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.data, {'cpf': None})
+
+    def test_get_dados_student_cpf_and_phone_empty(self):
+        self.student.cpf = '12345678910'
+        self.student.phone = ''
+        self.student.save()
+
+        response = self.client.get(self.url, {'id': self.student.id})
+        self.assertEqual(response.status_code, HTTP_200_OK)
+        self.assertEqual(response.data, {'cpf': self.student.cpf, 'phone': None})
+
+    def test_get_dados_student_cpf_and_phone_valid(self):
+        self.student.cpf = '12345678910'
+        self.student.phone = '55-99206-7827'
+        self.student.save()
+
+        response = self.client.get(self.url, {'id': self.student.id})
+        self.assertEqual(response.status_code, HTTP_200_OK)
+        self.assertEqual(response.data, {'cpf': self.student.cpf, 'phone': self.student.phone})
