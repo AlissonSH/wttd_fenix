@@ -18,10 +18,10 @@ const getDadosStudent = () => {
         }
     })
     .then((response) => {
-        $("#id_cpf").val(response.data.cpf);
-        $("#id_phone").val(response.data.phone);
+        $("#id_cpf").val(response.data.cpf).addClass('mask_cpf').trigger('input').prop({disabled: true});
+        $("#id_phone").val(response.data.phone).addClass('mask_phone').trigger('input');
     })
     .catch((error) => {
-        console.log(error);
+        console.log("Erro ao carregar o estudante." + error);
     })
 }
