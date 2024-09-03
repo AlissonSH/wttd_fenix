@@ -18,6 +18,10 @@ const getDadosStudent = () => {
         }
     })
     .then((response) => {
-        console.log(response)
+        $("#id_cpf").val(response.data.cpf);
+        $("#id_phone").val(response.data.phone);
+    })
+    .catch((error) => {
+        console.log(error);
     })
 }
