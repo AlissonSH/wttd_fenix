@@ -6,5 +6,22 @@ $(document).ready(function () {
             dataType: 'json'
         }
     });
+    $("#id_student").on('change', function () {
+        getDadosStudent();
+    });
 });
 
+const getDadosStudent = () => {
+    axios.get(URL_DADOS_STUDENT_AXIOS, {
+        params: {
+            "id": $("#id_student").find('option:selected').val()
+        }
+    })
+    .then((response) => {
+        $("#id_cpf").val(response.data.cpf).addClass('mask_cpf').trigger('input').prop({disabled: true});
+        $("#id_phone").val(response.data.phone).addClass('mask_phone').trigger('input');
+    })
+    .catch((error) => {
+        console.log("Erro ao carregar o estudante." + error);
+    })
+}

@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
+{% load widget_tweaks %}
 
 {% block extra_js %}
     <script>
         const URL_LISTA_STUDENT_AJAX = "{% url 'registration:student-select2' %}"
+        const URL_DADOS_STUDENT_AXIOS = "{% url 'registration:student-get-dados-student' %}"
     </script>
 
     <script src="{% static 'registration/js/student.js' %}"></script>
@@ -42,11 +44,11 @@
                     <div class="col-sm-3 form-group mb-0"></div>
 
                     <div class="col-sm-2 form-group label-text mb-3">
-                        {% bootstrap_field form.cpf %}
+                        {% bootstrap_field form.cpf|add_class:"mask_cpf" %}
                     </div>
 
                     <div class="col-sm-2 form-group label-text mb-3">
-                        {% bootstrap_field form.phone %}
+                        {% bootstrap_field form.phone|add_class:"mask_phone" %}
                     </div>
 
                     <div class="col-sm-12 form-group label-text mb-3">
