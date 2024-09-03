@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block sidebar %}
 <div class="sidebar">
@@ -33,7 +34,7 @@
                 <div class="form-row label-block input-text">
                     <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
                     {{ form.phone.errors }}
-                    {{ form.phone }}
+                    {{ form.phone|add_class:"mask_phone" }}
                 </div>
                 <p class="btn-row"><input type="submit" value="Enviar!"/></p>
             </form>
