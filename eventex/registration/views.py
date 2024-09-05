@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from eventex.registration.forms import RegistrationForm
 
 
@@ -9,5 +9,13 @@ def matricula_list(request):
 
 def matricula_create(request):
     template_name = "registration/matricula_create.html"
-    context = {'form': RegistrationForm()}
+    if request.method == "POST":
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("registration:matricula_list")
+    else:
+        form = RegistrationForm()
+
+    context = {'form': form}
     return render(request, template_name, context)
