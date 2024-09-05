@@ -47,14 +47,14 @@ class RegistrationPostValid(TestCase):
     def setUp(self):
         self.student = Subscription.objects.create(
             name="Alisson Sielo Holkem",
-            cpf="12345678901",
+            cpf="123.456.789-01",
             email="alissonsieloholkem@gmail.com",
             phone="55-99206-7827"
         )
 
         context = dict(
             student=self.student.id,
-            cpf="12345678901",
+            cpf=self.student.cpf,
             phone="55-99206-7827",
             observation="Aqui posso escrever algo."
         )
