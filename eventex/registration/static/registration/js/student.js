@@ -18,7 +18,7 @@ const getDadosStudent = () => {
         }
     })
     .then((response) => {
-        $("#id_cpf").val(response.data.cpf).addClass('mask_cpf').trigger('input').prop({disabled: true});
+        $("#id_cpf").val(response.data.cpf).addClass('mask_cpf').trigger('input');
         $("#id_phone").val(response.data.phone).addClass('mask_phone').trigger('input');
     })
     .catch((error) => {

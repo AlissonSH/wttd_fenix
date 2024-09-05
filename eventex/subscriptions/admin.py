@@ -6,7 +6,7 @@ from eventex.subscriptions.models import Subscription
 class SubscriptionModelAdmin(admin.ModelAdmin):
     list_display = ('name', 'cpf', 'email', 'phone', 'created_at', 'subscribed_today', 'paid')
     date_hierarchy = 'created_at'
-    search_fields = ('name', 'email', 'phone', 'cpf', 'created_at')
+    search_fields = ('name', 'cpf', 'email', 'phone', 'created_at')
     list_filter = ('paid', 'created_at')
 
     actions = ['mark_as_paid']

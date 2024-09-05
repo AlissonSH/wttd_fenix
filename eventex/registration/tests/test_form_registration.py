@@ -28,7 +28,7 @@ class RegistrationFormTests(TestCase):
     def test_make_validated_form(self, **kwargs):
         subscription = Subscription.objects.create(
             name="Alisson Sielo Holkem",
-            cpf="12345678901",
+            cpf="123.456.789-01",
             email="alissonsieloholkem@gmail.com",
             phone="55-99206-7827"
         )
@@ -36,7 +36,7 @@ class RegistrationFormTests(TestCase):
         values = dict(
             student=subscription.id,
             cpf=subscription.cpf,
-            phone=subscription.phone,
+            phone="55-99206-7827",
             observation="Aqui posso escrever algo."
         )
 
