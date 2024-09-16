@@ -6,7 +6,7 @@ from eventex.registration.models import Registration
 from eventex.subscriptions.models import Subscription
 
 
-class RegistrationViewSetSelect2TestCase(APITestCase):
+class RegistrationViewSetSelect2Test(APITestCase):
     def setUp(self):
         self.url = r('registration:student-select2')
         self.resp = self.client.get(self.url)
@@ -45,7 +45,7 @@ class RegistrationViewSetSelect2TestCase(APITestCase):
         self.assertIn(student_name, [results['text'] for results in results])
 
 
-class RegistrationViewSetGetDadosStudentTestCase(APITestCase):
+class RegistrationViewSetGetDadosStudentTest(APITestCase):
     def setUp(self):
         self.url = r('registration:student-get-dados-student')
         self.resp = self.client.get(self.url)
@@ -79,3 +79,38 @@ class RegistrationViewSetGetDadosStudentTestCase(APITestCase):
         response = self.client.get(self.url, {'id': self.student.id})
         self.assertEqual(response.status_code, HTTP_200_OK)
         self.assertEqual(response.data, {'cpf': self.student.cpf, 'phone': self.student.phone})
+
+
+class RegistrationViewSetListTest(APITestCase):
+    def setUp(self):
+        self.student = Subscription.objects.create(name='Alisson Sielo Holkem', paid=True)
+        self.registration = Registration.objects.create(
+            student=self.student, cpf='123.456.789-10', phone='55-99206-7827')
+
+        self.url = r('registration:student-list')
+        self.resp = self.client.get(self.url)
+
+    def test_get(self):
+        self.assertEqual(200, self.resp.status_code)
+
+    def test_student_list(self):
+        self.assertEqual(200, self.resp.status_code)
+        data = self.resp.json()
+
+        self.assertEqual(len(data), 1)
+        self.assertEqual(data[0]['student'], self.student.id)
+        self.assertEqual(data[0]['student_name'], self.student.name)
+        self.assertEqual(data[0]['cpf'], self.registration.cpf)
+        self.assertEqual(data[0]['phone'], self.registration.phone)
+        self.assertEqual(data[0]['student_paid'], self.student.paid)
+
+    def test_student_list_phone_empty(self):
+        self.registration.phone = ''
+        self.registration.save()
+
+        self.resp = self.client.get(self.url)
+        self.assertEqual(self.resp.status_code, HTTP_200_OK)
+        data = self.resp.json()
+
+        self.assertEqual(len(data), 1)
+        self.assertEqual(data[0]['phone'], '')
