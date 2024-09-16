@@ -493,7 +493,8 @@ html, body {
     border-radius: 2px;
     border-color: rgba(0, 0, 0, 0.1);
     padding: 0.65rem 1.25rem;
-    font-family: sans-serif, Arial; }
+    font-family: sans-serif, Arial;
+}
 
 .label-text {
     font-family: "Ubuntu", serif;
@@ -501,6 +502,30 @@ html, body {
     font-weight: 400;
     line-height: 1.5;
     border-radius: 2px;
-    color: #000000; }
+    color: #000000;
+}
+
+.table thead th {
+    font-weight: 380;
+    vertical-align: middle;
+    background-color: #f2f3fa;
+    border-bottom: 1px solid lightgrey;
+    color: #34495f !important;
+}
+
+.tabelaWrapper {
+    margin-right: 20px;
+    margin-left: -10px;
+    margin-top: 10px;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px / 1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 /* Fim Customização */

@@ -1,11 +1,18 @@
 from django.http import JsonResponse
 from rest_framework import viewsets, status
-from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.response import Response
+from eventex.registration.api.registration.serializers import RegistrationSerializer
+from eventex.registration.models import Registration
 from eventex.subscriptions.models import Subscription
 
 
 class StudentViewSet(viewsets.GenericViewSet):
+    def list(self, request, *args, **kwargs):
+        estudantes = Registration.objects.all()
+        serializer = RegistrationSerializer(estudantes, many=True)
+        return Response(serializer.data)
+
     @action(detail=False, methods=["get"])
     def select2(self, request):
         query = self.request.GET.get('term')
