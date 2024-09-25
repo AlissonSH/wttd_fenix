@@ -63,7 +63,7 @@ class RegistrationViewSetGetDadosStudentTest(APITestCase):
         self.assertEqual(response.data, {'cpf': None})
 
     def test_get_dados_student_cpf_and_phone_empty(self):
-        self.student.cpf = '123.456.789-10'
+        self.student.cpf = '12345678910'
         self.student.phone = ''
         self.student.save()
 
@@ -72,7 +72,7 @@ class RegistrationViewSetGetDadosStudentTest(APITestCase):
         self.assertEqual(response.data, {'cpf': self.student.cpf, 'phone': None})
 
     def test_get_dados_student_cpf_and_phone_valid(self):
-        self.student.cpf = '123.456.789-10'
+        self.student.cpf = '12345678910'
         self.student.phone = '55-99206-7827'
         self.student.save()
 

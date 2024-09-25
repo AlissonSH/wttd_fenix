@@ -7,7 +7,7 @@ class RegistrationModelTestCase(TestCase):
     def setUp(self):
         self.students = Subscription.objects.create(
             name="Alisson Sielo Holkem",
-            cpf="123.456.789-01",
+            cpf="12345678901",
             email="alissonsieloholkem@gmail.com",
             phone="55-99206-7827"
         )

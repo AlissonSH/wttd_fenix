@@ -47,7 +47,7 @@ class RegistrationPostValid(TestCase):
     def setUp(self):
         self.student = Subscription.objects.create(
             name="Alisson Sielo Holkem",
-            cpf="123.456.789-01",
+            cpf="12345678901",
             email="alissonsieloholkem@gmail.com",
             phone="55-99206-7827"
         )
