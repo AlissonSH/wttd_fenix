@@ -1,6 +1,6 @@
 # Eventex
 
-## Por iniciativa própria estou realizando uma nova etapa no projeto, onde demonstro minha experiência em desenvolvimento full stack, com foco em **Django (Python)** no back-end e **JavaScript (Ajax, Axios)** no front-end. Abaixo estão as principais funcionalidades e tecnologias que utilizo, com ênfase no **desenvolvimento de APIs**, **testes automatizados** e **interação front-end**.
+Por iniciativa própria estou realizando uma nova etapa no projeto, onde demonstro minha experiência em desenvolvimento full stack, com foco em **Django (Python)** no back-end e **JavaScript (Ajax, Axios)** no front-end. Abaixo estão as principais funcionalidades e tecnologias que utilizo, com ênfase no **desenvolvimento de APIs**, **testes automatizados** e **interação front-end**.
 
 ## Tecnologias Utilizadas
 
