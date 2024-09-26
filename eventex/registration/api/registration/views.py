@@ -19,8 +19,8 @@ class StudentViewSet(viewsets.GenericViewSet):
         if not query or query == '':
             return JsonResponse({"results": []})
 
-        inscritos = Subscription.objects.filter(name__icontains=query)
-        # criar uma função para pesquisar sem os acentos (REGEX)
+        inscritos = Subscription.objects.filter(name__unaccent__icontains=query)
+
         results = {
             "results": [
                 {"id": i.pk, "text": i.name} for i in inscritos
