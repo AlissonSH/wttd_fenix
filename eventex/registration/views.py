@@ -1,21 +1,27 @@
+from audioop import reverse
+from pyexpat.errors import messages
 from django.shortcuts import render, redirect
+from rest_framework.reverse import reverse_lazy
+from django.contrib import messages
 from eventex.registration.forms import RegistrationForm
+from eventex.registration.models import Registration
+from django.views.generic import ListView, CreateView
 
 
-def matricula_list(request):
+
+class MatriculaListView(ListView):
+    model = Registration
     template_name = "registration/matricula_list.html"
-    return render(request, template_name)
 
 
-def matricula_create(request):
+class MatriculaCreateView(CreateView):
+    model = Registration
     template_name = "registration/matricula_create.html"
-    if request.method == "POST":
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("registration:matricula_list")
-    else:
-        form = RegistrationForm()
+    form_class = RegistrationForm
 
-    context = {'form': form}
-    return render(request, template_name, context)
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        messages.success(self.request, 'Matrícula registrada com sucesso!')
+        return reverse_lazy('registration:matricula_list')
