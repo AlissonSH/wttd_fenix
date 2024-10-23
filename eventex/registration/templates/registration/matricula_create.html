@@ -51,11 +51,32 @@
                         {% bootstrap_field form.phone|add_class:"mask_phone" %}
                     </div>
 
+                </div>
+
+                <div class="row">
+                    <div class="ibox-head">
+                        <div class="ibox-title"><a>
+                            <i class="ibox-collapse-icon ti-angle-down"></i> Palestra </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 form-group label-text mb-3">
+                        {% bootstrap_field form.talk|add_class:"form_select2" %}
+                    </div>
+                    <div class="col-sm-4 form-group label-text mb-3">
+                        {% bootstrap_field form.name_speaker %}
+                    </div>
+                    <div class="col-sm-4 form-group label-text mb-3">
+                        {% bootstrap_field form.start_time %}
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-sm-12 form-group label-text mb-3">
                         {% bootstrap_field form.observation %}
                     </div>
-
                 </div>
+
                 <div class="row">
                     <div class="col-sm-auto">
                         <button type="submit" class="btn btn-primary btn-lg mt-3">Enviar</button>
