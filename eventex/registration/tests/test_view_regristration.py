@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
+
+from eventex.core.models import Talk
 from eventex.registration.forms import RegistrationForm
 from eventex.registration.models import Registration
 from eventex.subscriptions.models import Subscription
@@ -40,7 +42,8 @@ class MatriculaCreateView(TestCase):
 
     def test_form_has_fields(self):
         form = self.resp.context['form']
-        self.assertSequenceEqual(['student', 'cpf', 'phone', 'observation'], list(form.fields))
+        self.assertSequenceEqual(
+            ['student', 'cpf', 'phone', 'talk', 'name_speaker', 'start_time', 'observation'], list(form.fields))
 
 
 class RegistrationPostValid(TestCase):
@@ -51,11 +54,17 @@ class RegistrationPostValid(TestCase):
             email="alissonsieloholkem@gmail.com",
             phone="55-99206-7827"
         )
+        self.talks = Talk.objects.create(
+            title="Python Brasil"
+        )
 
         context = dict(
             student=self.student.id,
             cpf=self.student.cpf,
             phone="55-99206-7827",
+            talk=self.talks.id,
+            name_speaker="Henrique Bastos",
+            start_time="08:30",
             observation="Aqui posso escrever algo."
         )
         self.resp = self.client.post(r('registration:matricula_create'), context)
