@@ -1,12 +1,22 @@
 from django.template.defaultfilters import length
 from django.test import TestCase
 
-from eventex.core.models import Talk
+from eventex.core.models import Talk, Course
 from eventex.registration.forms import RegistrationForm
 from eventex.subscriptions.models import Subscription
 
 
 class RegistrationFormTests(TestCase):
+    def setUp(self):
+        self.subscription = Subscription.objects.create(
+            name="Alisson Sielo Holkem",
+            cpf="12345678901",
+            email="alissonsieloholkem@gmail.com",
+            phone="55-99206-7827"
+        )
+        self.talks = Talk.objects.create(title="Python Brasil")
+        self.course = Course.objects.create(title="Welcome To The Django", slots=20)
+
     def test_form_has_fields(self):
         form = RegistrationForm()
         self.assertSequenceEqual(
@@ -40,21 +50,10 @@ class RegistrationFormTests(TestCase):
         form = self.test_make_validated_form(start_time='')
         self.assertFalse(form.errors)
 
-
     def test_make_validated_form(self, **kwargs):
-        subscription = Subscription.objects.create(
-            name="Alisson Sielo Holkem",
-            cpf="12345678901",
-            email="alissonsieloholkem@gmail.com",
-            phone="55-99206-7827"
-        )
-        self.talks = Talk.objects.create(
-            title="Python Brasil"
-        )
-
         values = dict(
-            student=subscription.id,
-            cpf=subscription.cpf,
+            student=self.subscription.id,
+            cpf=self.subscription.cpf,
             phone="55-99206-7827",
             talk=self.talks.id,
             name_speaker="Henrique Bastos",
@@ -71,3 +70,12 @@ class RegistrationFormTests(TestCase):
         error = form.errors.as_data()
         error_list = error[fields][0]
         self.assertEquals(code, error_list.code)
+
+    def test_talk_without_course(self):
+        talks2 = Talk.objects.create(title='Django Brasil')
+
+        form = RegistrationForm()
+
+        self.assertIn(self.talks, form.fields['talk'].queryset)
+        self.assertIn(talks2, form.fields['talk'].queryset)
+        self.assertNotIn(self.course, form.fields['talk'].queryset)
