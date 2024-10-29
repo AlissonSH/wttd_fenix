@@ -1,7 +1,8 @@
 $(document).ready(function () {
     $(".form_select2").select2({
         placeholder: "",
-        allowClear: true
+        allowClear: true,
+        width: '100%'
     });
 
     $("#id_student").select2({

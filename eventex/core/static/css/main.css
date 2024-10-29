@@ -543,4 +543,8 @@ html, body {
     font-weight: 500;
     color: #2e5d8e;;
 }
+
+.active-readonly {
+    background-color: #e9ecef !important;
+}
 /* Fim Customização */
