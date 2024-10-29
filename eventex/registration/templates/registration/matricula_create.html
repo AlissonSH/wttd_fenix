@@ -5,11 +5,13 @@
 
 {% block extra_js %}
     <script>
-        const URL_LISTA_STUDENT_AJAX = "{% url 'registration:student-select2' %}"
-        const URL_DADOS_STUDENT_AXIOS = "{% url 'registration:student-get-dados-student' %}"
+        const URL_LISTA_STUDENT_AJAX = "{% url 'registration:registration-select2' %}"
+        const URL_DADOS_STUDENT_AXIOS = "{% url 'registration:registration-get-dados-student' %}"
+        const URL_DADOS_TALK_AXIOS = "{% url 'registration:registration-get-dados-talk' %}"
     </script>
 
     <script src="{% static 'registration/js/student.js' %}"></script>
+    <script src="{% static 'registration/js/talk.js' %}"></script>
 {% endblock %}
 
 {% block sidebar %}
