@@ -2,6 +2,8 @@ from django.http import JsonResponse
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+
+from eventex.core.models import Talk
 from eventex.registration.api.registration.serializers import RegistrationSerializer
 from eventex.registration.models import Registration
 from eventex.subscriptions.models import Subscription
@@ -43,5 +45,19 @@ class StudentViewSet(viewsets.GenericViewSet):
                 {"cpf": student.cpf, "phone": student.phone if student.phone else None},
                 status=status.HTTP_200_OK
             )
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    @action(detail=False, methods=["get"])
+    def get_dados_talk(self, request):
+        talk = Talk.objects.filter(id=self.request.query_params.get('id')).first()
+
+        if not talk:
+            return Response({"talk": None}, status=status.HTTP_404_NOT_FOUND)
+
+        speakers = [s.name for s in talk.speakers.all()]
+
+        try:
+            return Response({"start": talk.start.strftime("%H:%M"), "speaker": speakers}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

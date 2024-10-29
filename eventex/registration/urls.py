@@ -5,7 +5,7 @@ from eventex.registration.views import MatriculaListView, MatriculaCreateView
 
 app_name = 'registration'
 router = DefaultRouter()
-router.register(r'students', StudentViewSet, basename='student')
+router.register(r'registrations', StudentViewSet, basename='registration')
 
 urlpatterns = [
     path('api/', include(router.urls)),

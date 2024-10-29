@@ -2,13 +2,15 @@ from rest_framework import status
 from rest_framework.status import HTTP_200_OK
 from rest_framework.test import APITestCase
 from django.urls import reverse as r
+
+from eventex.core.models import Talk, Speaker
 from eventex.registration.models import Registration
 from eventex.subscriptions.models import Subscription
 
 
 class RegistrationViewSetSelect2Test(APITestCase):
     def setUp(self):
-        self.url = r('registration:student-select2')
+        self.url = r('registration:registration-select2')
         self.resp = self.client.get(self.url)
 
     def test_get(self):
@@ -47,7 +49,7 @@ class RegistrationViewSetSelect2Test(APITestCase):
 
 class RegistrationViewSetGetDadosStudentTest(APITestCase):
     def setUp(self):
-        self.url = r('registration:student-get-dados-student')
+        self.url = r('registration:registration-get-dados-student')
         self.resp = self.client.get(self.url)
         self.student = Subscription.objects.create(name='Alisson Sielo Holkem')
 
@@ -87,7 +89,7 @@ class RegistrationViewSetListTest(APITestCase):
         self.registration = Registration.objects.create(
             student=self.student, cpf='123.456.789-10', phone='55-99206-7827')
 
-        self.url = r('registration:student-list')
+        self.url = r('registration:registration-list')
         self.resp = self.client.get(self.url)
 
     def test_get(self):
@@ -114,3 +116,31 @@ class RegistrationViewSetListTest(APITestCase):
 
         self.assertEqual(len(data), 1)
         self.assertEqual(data[0]['phone'], '')
+
+
+class RegistrationViewSetGetDadosTalkTest(APITestCase):
+    def setUp(self):
+        self.url = r('registration:registration-get-dados-talk')
+        self.resp = self.client.get(self.url)
+        self.talk = Talk.objects.create(title='Python Brasil', start="08:30")
+        self.speaker = Speaker.objects.create(name='Henrique Bastos')
+        self.talk.speakers.add(self.speaker)
+
+    def test_get(self):
+        response = self.client.get(self.url, {'id': self.talk.id})
+        self.assertEqual(200, response.status_code)
+
+    def test_get_dados_talk(self):
+        response = self.client.get(self.url, {'id': self.talk.id})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['start'], "08:30")
+        self.assertEqual(response.data['speaker'][0], self.speaker.name)
+
+    def test_talk_with_multiple_speakers(self):
+        speaker2 = Speaker.objects.create(name='Grace Hopper')
+        self.talk.speakers.add(speaker2)
+        response = self.client.get(self.url, {'id': self.talk.id})
+        self.assertEqual(200, response.status_code)
+
+        speaker_all = [speaker.name for speaker in self.talk.speakers.all()]
+        self.assertEqual(response.data['speaker'], speaker_all)

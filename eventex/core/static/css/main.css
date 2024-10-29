@@ -456,7 +456,7 @@ html, body {
 }
 
 .ibox-body {
-    padding: 25px 15px 25px 15px;
+    padding: 20px 15px 20px 15px;
 }
 
 .accent-primary {
@@ -528,4 +528,23 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.row {
+    margin-bottom: 10px;
+}
+
+.row .ibox-head {
+    border-top: 1px solid #ccc;
+}
+
+.row .ibox-head .ibox-title {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 19px;
+    font-weight: 500;
+    color: #2e5d8e;;
+}
+
+.active-readonly {
+    background-color: #e9ecef !important;
+}
 /* Fim Customização */
