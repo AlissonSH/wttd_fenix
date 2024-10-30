@@ -7,7 +7,7 @@ from eventex.registration.models import Registration
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Registration
-        fields = ["student", "cpf", "phone", "talk", "name_speaker", "start_time", "observation"]
+        fields = ["student", "cpf", "phone", "talk", "course", "name_speaker", "start_time", "observation"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
