@@ -58,6 +58,10 @@ class Talk(models.Model):
     def __str__(self):
         return self.title
 
+    @classmethod
+    def just_talk(cls):
+        return cls.objects.exclude(pk__in=Course.objects.values_list('pk', flat=True))
+
 
 class Course(Talk):
     slots = models.IntegerField()
