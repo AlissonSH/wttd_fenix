@@ -8,10 +8,12 @@
         const URL_LISTA_STUDENT_AJAX = "{% url 'registration:registration-select2' %}"
         const URL_DADOS_STUDENT_AXIOS = "{% url 'registration:registration-get-dados-student' %}"
         const URL_DADOS_TALK_AXIOS = "{% url 'registration:registration-get-dados-talk' %}"
+        const URL_DADOS_COURSE_AXIOS = "{% url 'registration:registration-get-dados-course' %}"
     </script>
 
     <script src="{% static 'registration/js/student.js' %}"></script>
     <script src="{% static 'registration/js/talk.js' %}"></script>
+    <script src="{% static 'registration/js/course.js' %}"></script>
 {% endblock %}
 
 {% block sidebar %}
@@ -63,19 +65,58 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4 form-group label-text mb-3">
-                        {% bootstrap_field form.talk|add_class:"form_select2" %}
-                    </div>
+                    {{ talk_formset.management_form }}
+                    {% for form in talk_formset %}
 
-                    <div class="col-sm-1 form-group mb-0"></div>
+                        <div class="col-sm-4 form-group label-text mb-3">
+                            {% bootstrap_field form.talk|add_class:"form_select2" %}
+                        </div>
 
-                    <div class="col-sm-3 form-group label-text mb-3">
-                        {% bootstrap_field form.name_speaker %}
-                    </div>
+                        <div class="col-sm-1 form-group mb-0"></div>
 
-                    <div class="col-sm-2 form-group label-text mb-3">
-                        {% bootstrap_field form.start_time %}
+                        <div class="col-sm-3 form-group label-text mb-3">
+                            {% bootstrap_field form.name_speaker %}
+                        </div>
+
+                        <div class="col-sm-2 form-group label-text mb-3">
+                            {% bootstrap_field form.start_time %}
+                        </div>
+
+                        <div class="col-sm-2 form-group label-text mb-3">
+                            {% bootstrap_field form.registration %}
+                        </div>
+
+                    {% endfor %}
+                </div>
+
+                <div class="row">
+
+                    <div class="ibox-head">
+                        <div class="ibox-title"><a>
+                            <i class="ibox-collapse-icon ti-angle-down"></i> Curso </a>
+                        </div>
                     </div>
+                    {{ course_formset.management_form }}
+                    {% for form in course_formset %}
+
+                        <div class="col-sm-4 form-group label-text mb-3">
+                            {% bootstrap_field form.course|add_class:"form_select2" %}
+                        </div>
+
+                        <div class="col-sm-1 form-group mb-0"></div>
+
+                        <div class="col-sm-3 form-group label-text mb-3">
+                            {% bootstrap_field form.name_speaker %}
+                        </div>
+
+                        <div class="col-sm-2 form-group label-text mb-3">
+                            {% bootstrap_field form.start_time %}
+                        </div>
+
+                        <div class="col-sm-2 form-group label-text mb-3">
+                            {% bootstrap_field form.registration %}
+                        </div>
+                    {% endfor %}
                 </div>
 
                 <div class="row">
