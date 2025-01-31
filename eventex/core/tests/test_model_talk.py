@@ -8,6 +8,14 @@ class TalkModelsTest(TestCase):
         self.talk = Talk.objects.create(
             title="Título da Palestra",
         )
+        self.talk2 = Talk.objects.create(
+            title="Título da Palestra 2",
+        )
+        self.course = Course.objects.create(
+            title="Título do Curso",
+            slots=20
+        )
+
     def test_create(self):
         self.assertTrue(Talk.objects.exists())
 
@@ -42,6 +50,18 @@ class TalkModelsTest(TestCase):
 
     def test_ordering(self):
         self.assertListEqual(["start"], Talk._meta.ordering)
+
+    def test_just_talk(self):
+        talks = Talk.just_talk()
+        self.assertIn(self.talk, talks)
+        self.assertIn(self.talk2, talks)
+        self.assertNotIn(self.course, talks)
+
+    def test_just_talk_when_all_if_no_course(self):
+        Course.objects.all().delete()
+        talks = Talk.just_talk()
+        self.assertIn(self.talk, talks)
+        self.assertIn(self.talk2, talks)
 
 
 class PeriodManagerTest(TestCase):
