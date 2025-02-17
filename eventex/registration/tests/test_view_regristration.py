@@ -43,7 +43,7 @@ class MatriculaCreateView(TestCase):
     def test_form_has_fields(self):
         form = self.resp.context['form']
         self.assertSequenceEqual(
-            ['student', 'cpf', 'phone', 'talk', 'course', 'name_speaker', 'start_time', 'observation'], list(form.fields))
+            ['student', 'cpf', 'phone', 'observation'], list(form.fields))
 
 
 class RegistrationPostValid(TestCase):
@@ -51,23 +51,26 @@ class RegistrationPostValid(TestCase):
         self.student = Subscription.objects.create(
             name="Alisson Sielo Holkem",
             cpf="12345678901",
-            email="alissonsieloholkem@gmail.com",
-            phone="55-99206-7827"
         )
         self.talks = Talk.objects.create(title="Python Brasil")
         self.course = Course.objects.create(title="Welcome To The Django", slots=20)
 
-        context = dict(
-            student=self.student.id,
-            cpf=self.student.cpf,
-            phone="55-99206-7827",
-            talk=self.talks.id,
-            course=self.course.id,
-            name_speaker="Henrique Bastos",
-            start_time="08:30",
-            observation="Aqui posso escrever algo."
-        )
-        self.resp = self.client.post(r('registration:matricula_create'), context)
+        self.context = {
+            "student": self.student.id,
+            "cpf": self.student.cpf,
+            "phone": "55-99206-7827",
+            "observation": "Aqui posso escrever algo.",
+
+            "itenstalk_set-TOTAL_FORMS": "1",
+            "itenstalk_set-INITIAL_FORMS": "0",
+            "itenstalk_set-0-talk": str(self.talks.id),
+
+            "itenscourse_set-TOTAL_FORMS": "1",
+            "itenscourse_set-INITIAL_FORMS": "0",
+            "itenscourse_set-0-course": str(self.course.id),
+        }
+
+        self.resp = self.client.post(r('registration:matricula_create'), self.context)
 
     def test_post(self):
         self.assertEqual(302, self.resp.status_code)
