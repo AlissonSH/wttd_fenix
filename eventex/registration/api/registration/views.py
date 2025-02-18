@@ -3,7 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from eventex.core.models import Talk
+from eventex.core.models import Talk, Course
 from eventex.registration.api.registration.serializers import RegistrationSerializer
 from eventex.registration.models import Registration
 from eventex.subscriptions.models import Subscription
@@ -55,9 +55,25 @@ class StudentViewSet(viewsets.GenericViewSet):
         if not talk:
             return Response({"talk": None}, status=status.HTTP_404_NOT_FOUND)
 
-        speakers = [s.name for s in talk.speakers.all()]
+        talk_speakers = [s.name for s in talk.speakers.all()]
 
         try:
-            return Response({"start": talk.start.strftime("%H:%M"), "speaker": speakers}, status=status.HTTP_200_OK)
+            return Response(
+                {"start": talk.start.strftime("%H:%M"), "speaker": talk_speakers}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    @action(detail=False, methods=["get"])
+    def get_dados_course(self, request):
+        course = Course.objects.filter(id=self.request.query_params.get('id')).first()
+
+        if not course:
+            Response({"course": None}, status=status.HTTP_404_NOT_FOUND)
+
+        course_speakers = [s.name for s in course.speakers.all()]
+
+        try:
+            return Response(
+                {"start": course.start.strftime("%H:%M"), "speaker": course_speakers}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
