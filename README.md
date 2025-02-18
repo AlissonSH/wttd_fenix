@@ -1,5 +1,15 @@
 # Eventex
 
+Por iniciativa própria estou realizando uma nova etapa no projeto, onde demonstro minha experiência em desenvolvimento full stack, com foco em **Django (Python)** no back-end e **JavaScript (Ajax, Axios)** no front-end. Abaixo estão as principais funcionalidades e tecnologias que utilizo, com ênfase no **desenvolvimento de APIs**, **testes automatizados** e **interação front-end**.
+
+## Tecnologias Utilizadas
+
+- **Python & Django**: Desenvolvimento de aplicações back-end robustas, com Django Rest Framework para criação de APIs RESTful.
+- **Testes Automatizados**: Utilizo extensivamente **TestCase** e **APITestCase** para garantir a qualidade e estabilidade das aplicações.
+- **JavaScript, Ajax & Axios**: Criação de interações dinâmicas no front-end, com requisições POST/GET à API.
+- **HTML & CSS**: Layouts otimizados para o usuário.
+- **PostgreSQL**: Migração do banco de dados de SQLite3 para PostgreSQL, mantendo a compatibilidade com ambos.
+
 Sistema de Eventos encomendado pela Morena.
 
 ## Como desenvolver?
