@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'eventex.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # Database carregado do .env pelo postgresql
-default_dburl = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
+default_dburl = f'sqlite:///{BASE_DIR / "db.sqlite3"}'
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
