@@ -1,4 +1,4 @@
-# Eventex
+# Eventex – Sistema de Eventos com Django
 
 Por iniciativa própria estou realizando uma nova etapa no projeto, onde demonstro minha experiência em desenvolvimento full stack, com foco em **Django (Python)** no back-end e **JavaScript (Ajax, Axios)** no front-end. Abaixo estão as principais funcionalidades e tecnologias que utilizo, com ênfase no **desenvolvimento de APIs**, **testes automatizados** e **interação front-end**.
 
@@ -228,3 +228,6 @@ seu-usuario.pythonanywhere.com
 ```
 
 Dica final: se ao acessar apresentar algum erro, você pode verificar o log no menu Web > Log Files > e acessar Error log e descer até o final da página para ver o que há de errado e tentar corrigir.
+
+## Licença
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
